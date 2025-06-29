@@ -76,6 +76,7 @@ sudo -u rclone rclone config create sftp-backup sftp \
 ```
 
 ### 4. Configure Script
+
 Edit the configuration variables at the top of the script:
 
 ```bash
