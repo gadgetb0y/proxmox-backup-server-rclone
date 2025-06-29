@@ -1,4 +1,4 @@
-# Proxmox Backup Server rclone Sync Script
+# Proxmox Backup Server: rclone Sync Script
 
 A comprehensive bash script for syncing Proxmox Backup Server (PBS) datastores to remote storage via rclone and SFTP. This script provides automated, reliable, and configurable off-site backup capabilities for your PBS infrastructure.
 
@@ -24,6 +24,7 @@ A comprehensive bash script for syncing Proxmox Backup Server (PBS) datastores t
 
 
 ### Installation
+
 ```bash
 # Install rclone
 curl https://rclone.org/install.sh | sudo bash
@@ -38,6 +39,7 @@ apt install curl  # or sendemail, msmtp
 ## Quick Start
 
 ### 1. Clone and Setup
+
 ```bash
 # Clone the repository
 git clone https://git.gadgetboy.org/Homelab/proxmox-backup-server-rclone.git
@@ -52,6 +54,7 @@ sudo usermod -a -G backup rclone  # Add to backup group for PBS access
 ```
 
 ### 2. Configure SSH Keys
+
 ```bash
 # Generate SSH key pair
 sudo -u rclone ssh-keygen -t rsa -b 4096 -f /home/rclone/.ssh/id_rsa
@@ -61,6 +64,7 @@ sudo -u rclone ssh-copy-id -i /home/rclone/.ssh/id_rsa.pub -p 23 user@remote-ser
 ```
 
 ### 3. Configure rclone Remote
+
 ```bash
 # Configure SFTP remote
 sudo -u rclone rclone config create sftp-backup sftp \
@@ -94,6 +98,7 @@ SMTP_PASSWORD="app-password"
 ```
 
 ### 5. Test the Script
+
 ```bash
 # Run initial test
 sudo -u rclone ./proxmox-backup-sync.sh
@@ -149,6 +154,7 @@ sudo -u rclone crontab -e
 ## Usage Examples
 
 ### Basic Usage
+
 ```bash
 # Manual sync
 ./proxmox-backup-sync.sh
@@ -158,6 +164,7 @@ rclone sync /mnt/datastore/datastore-name/ sftp-backup:/home/pbs/ --dry-run
 ```
 
 ### Cron Schedule Examples
+
 ```bash
 # Daily at 2:30 AM
 30 2 * * * /path/to/proxmox-backup-sync.sh >/dev/null 2>&1
