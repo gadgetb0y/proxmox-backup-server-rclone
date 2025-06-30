@@ -1,4 +1,4 @@
-# Proxmox Backup Server: rclone Sync Script
+# Proxmox Backup Server: Rclone Sync Script
 
 A comprehensive bash script for syncing Proxmox Backup Server (PBS) datastores to remote storage using rclone and SFTP. This script provides automated, reliable, and configurable off-site backup capabilities for your PBS setup.
 
@@ -110,6 +110,9 @@ tail -f /home/rclone/logs/pbs-rclone-sync/backup-sync.log
 ```
 
 ### 6. Schedule with Cron
+
+>It is recommended that you run the script manually and complete your first uninterrupted remote backup before you schedule the cron job. This will ensure there are no conflicting backup jobs should it take longer than 24 hours.
+
 ```bash
 # Edit rclone user's crontab
 sudo -u rclone crontab -e
